@@ -14,9 +14,9 @@
 
 <div class="center">
   <p>
-    <img src="success.png" id="visual_status_success" style="display:none;">
-    <img src="failure.png" id="visual_status_failure" style="display:none;">
-    <img src="ready.png" id="visual_status_ready" style="display:none;">
+    <img src="assets/success.png" id="visual_status_success" style="display:none;">
+    <img src="assets/failure.png" id="visual_status_failure" style="display:none;">
+    <img src="assets/ready.png" id="visual_status_ready" style="display:none;">
   </p>
 </div>
 
@@ -26,12 +26,16 @@
   </p>
   <p>
     <audio controls id="start_wav">
-      <source src="start.wav" type="audio/wav">
+      <source src="assets/start.wav" type="audio/wav">
     </audio>
   </p>
 </div>
 
 <!-- Preload assets -->
-<audio hidden src="success.wav" id="success_wav">
-<audio hidden src="fail.wav" id="fail_wav">
+<audio hidden id="success_wav">
+  <source src="assets/success.wav" type="audio/wav">
+</audio>
+<audio hidden id="fail_wav">
+  <source src="assets/fail.wav" type="audio/wav">
+</audio>
 
