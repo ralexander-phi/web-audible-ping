@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Audible Internet Connectivity Checker</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="ping.js"></script>
+</head>
+
+<body>
+<header>
+  <h1>Audible Internet Connectivity Checker</h1>
+</header>
+
+<div class="center">
+  <p>
+    <img src="success.png" id="visual_status_success" style="display:none;">
+    <img src="failure.png" id="visual_status_failure" style="display:none;">
+    <img src="ready.png" id="visual_status_ready" style="display:none;">
+  </p>
+</div>
+
+<div id="setup">
+  <p>
+    Enable audio in this tab by pressing play on the controller below.
+  </p>
+  <p>
+    <audio controls id="start_wav">
+      <source src="start.wav" type="audio/wav">
+    </audio>
+  </p>
+</div>
+
+<!-- Preload assets -->
+<audio hidden src="success.wav" id="success_wav">
+<audio hidden src="fail.wav" id="fail_wav">
+
