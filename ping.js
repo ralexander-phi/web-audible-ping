@@ -13,13 +13,14 @@ window.addEventListener('load', function () {
         var client = new XMLHttpRequest();
         // cache burst GET request
         client.open('GET', '/pong.txt?' + Math.random());
+        client.timeout = 5000;
         client.onload = function() {
             visual_status_failure.style.display = "none";
             visual_status_ready.style.display = "none";
             visual_status_success.style.display = "block";
             success_audio.play();
         }
-        client.onerror = function() {
+        client.ontimeout = client.onerror = function() {
             visual_status_success.style.display = "none";
             visual_status_ready.style.display = "none";
             visual_status_failure.style.display = "block";
