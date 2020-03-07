@@ -13,3 +13,6 @@ audio {
   display: block;
 }
 
+button {
+  font-size: 30px;
+}

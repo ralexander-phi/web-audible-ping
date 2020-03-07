@@ -31,6 +31,28 @@
   </p>
 </div>
 
+<p>
+  <button id="settings">⚙</button>
+  <div id="settings-panel" style="display:none">
+    <p>
+      <input type="checkbox" id="mute">
+      <label for="mute">Mute</label>
+    </p>
+    <p>
+      <input checked type="checkbox" id="beep-on-failure">
+      <label for="beep-on-failure">Beep on failed ping</label>
+    </p>
+    <p>
+      <input checked type="checkbox" id="beep-on-success">
+      <label for="beep-on-success">Beep on successful ping</label>
+    </p>
+    <p>
+      <input type="checkbox" id="invert">
+      <label for="invert">Invert sounds</label>
+    </p>
+  </div>
+</p>
+
 <!-- Preload assets -->
 <audio hidden id="success_wav">
   <source src="assets/success.wav" type="audio/wav">
