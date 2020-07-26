@@ -4,6 +4,8 @@
 
 HTTP ping back to this site, play a sound on success or failure.
 
+[Hosted here](https://alexsci.com/web-audible-ping/)
+
 ## Sound credits
 
 [fail.wav](https://freesound.org/people/CGEffex/sounds/86986/)
