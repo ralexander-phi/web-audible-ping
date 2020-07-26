@@ -31,27 +31,23 @@ window.addEventListener('load', function () {
             mute_toggle.checked;
     }
 
-    function on_success() {
-        visual_status_failure.style.display = "none";
+    function on_result(isSuccess) {
         visual_status_ready.style.display = "none";
-        visual_status_success.style.display = "block";
-
-        if ((! mute_toggle.checked) && beep_on_success_toggle.checked) {
-            if (invert_toggle.checked) {
-                fail_audio.play();
-            } else {
-                success_audio.play();
-            }
+        if (isSuccess) {
+            visual_status_success.style.display = "block";
+            visual_status_failure.style.display = "none";
+        } else {
+            visual_status_success.style.display = "none";
+            visual_status_failure.style.display = "block";
         }
-    }
 
-    function on_fail() {
-        visual_status_success.style.display = "none";
-        visual_status_ready.style.display = "none";
-        visual_status_failure.style.display = "block";
+        var shouldPlay = (
+          (! mute_toggle.checked) &&
+           ((beep_on_success_toggle.checked && isSuccess) ||
+           (beep_on_failure_toggle.checked && !isSuccess)));
 
-        if ((! mute_toggle.checked) && beep_on_failure_toggle.checked) {
-            if (invert_toggle.checked) {
+        if (shouldPlay) {
+            if (invert_toggle.checked != isSuccess) {
                 success_audio.play();
             } else {
                 fail_audio.play();
@@ -62,10 +58,10 @@ window.addEventListener('load', function () {
     function ping() {
         var client = new XMLHttpRequest();
         // cache burst GET request
-        client.open('GET', '/pong.txt?' + Math.random());
+        client.open('GET', '/web-audible-ping/pong.txt?' + Math.random());
         client.timeout = 5000;
-        client.onload = on_success;
-        client.ontimeout = client.onerror = on_fail;
+        client.onload = function() { on_result(true); };
+        client.ontimeout = client.onerror = function() { on_result(false); };
         client.onloadend = function() {
             setTimeout(reset, 3000);
         }
